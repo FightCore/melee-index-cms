@@ -422,6 +422,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'shared.rich-text',
         'shared.slider',
         'shared.fightcore-move-embed',
+        'fightcore.move-embed',
       ]
     >;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;

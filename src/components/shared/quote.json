@@ -11,6 +11,18 @@
     },
     "body": {
       "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "default": "info",
+      "enum": [
+        "success",
+        "info",
+        "warn",
+        "error",
+        "secondairy",
+        "contrast"
+      ]
     }
   }
 }
