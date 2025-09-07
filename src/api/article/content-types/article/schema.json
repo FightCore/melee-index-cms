@@ -52,7 +52,9 @@
         "shared.quote",
         "shared.rich-text",
         "shared.slider",
-        "fightcore.move-embed"
+        "fightcore.move-embed",
+        "youtube.video-embed",
+        "exercise.knowledge-check"
       ]
     }
   }

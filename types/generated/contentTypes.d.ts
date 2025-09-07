@@ -422,6 +422,8 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'shared.rich-text',
         'shared.slider',
         'fightcore.move-embed',
+        'youtube.video-embed',
+        'exercise.knowledge-check',
       ]
     >;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
