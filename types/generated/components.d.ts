@@ -1,5 +1,18 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ExerciseKnowledgeCheck extends Struct.ComponentSchema {
+  collectionName: 'components_exercise_knowledge_checks';
+  info: {
+    displayName: 'knowledge-check';
+  };
+  attributes: {
+    answers: Schema.Attribute.Text & Schema.Attribute.Required;
+    body: Schema.Attribute.Text;
+    correctAnswer: Schema.Attribute.String & Schema.Attribute.Required;
+    question: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface FightcoreMoveEmbed extends Struct.ComponentSchema {
   collectionName: 'components_fightcore_move_embeds';
   info: {
@@ -143,17 +156,6 @@ export interface FightcoreMoveEmbed extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedFightcoreMoveEmbed extends Struct.ComponentSchema {
-  collectionName: 'components_shared_fightcore_move_embeds';
-  info: {
-    displayName: 'Fightcore Move Embed';
-  };
-  attributes: {
-    character: Schema.Attribute.String;
-    move: Schema.Attribute.String;
-  };
-}
-
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -220,16 +222,27 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface YoutubeVideoEmbed extends Struct.ComponentSchema {
+  collectionName: 'components_youtube_video_embeds';
+  info: {
+    displayName: 'video-embed';
+  };
+  attributes: {
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'exercise.knowledge-check': ExerciseKnowledgeCheck;
       'fightcore.move-embed': FightcoreMoveEmbed;
-      'shared.fightcore-move-embed': SharedFightcoreMoveEmbed;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'youtube.video-embed': YoutubeVideoEmbed;
     }
   }
 }

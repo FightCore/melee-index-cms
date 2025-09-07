@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_exercise_knowledge_checks",
+  "info": {
+    "displayName": "knowledge-check"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "text"
+    },
+    "answers": {
+      "type": "text",
+      "required": true
+    },
+    "correctAnswer": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

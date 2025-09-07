@@ -421,7 +421,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'shared.quote',
         'shared.rich-text',
         'shared.slider',
-        'shared.fightcore-move-embed',
         'fightcore.move-embed',
       ]
     >;

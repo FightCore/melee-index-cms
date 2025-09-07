@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_youtube_video_embeds",
+  "info": {
+    "displayName": "video-embed"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

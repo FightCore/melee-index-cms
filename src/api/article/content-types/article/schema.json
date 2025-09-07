@@ -52,7 +52,6 @@
         "shared.quote",
         "shared.rich-text",
         "shared.slider",
-        "shared.fightcore-move-embed",
         "fightcore.move-embed"
       ]
     }
