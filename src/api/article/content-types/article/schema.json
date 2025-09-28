@@ -45,6 +45,11 @@
       "target": "api::category.category",
       "inversedBy": "articles"
     },
+    "characters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character.character"
+    },
     "blocks": {
       "type": "dynamiczone",
       "components": [
