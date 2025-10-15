@@ -41,6 +41,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::character.character"
+    },
+    "resources": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::resource.resource",
+      "mappedBy": "authors"
     }
   }
 }

@@ -19,6 +19,12 @@
     },
     "special": {
       "type": "boolean"
+    },
+    "resources": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::resource.resource",
+      "mappedBy": "characters"
     }
   }
 }

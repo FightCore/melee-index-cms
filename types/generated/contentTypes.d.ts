@@ -540,6 +540,10 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     mains: Schema.Attribute.Relation<'oneToMany', 'api::character.character'>;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    resources: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::resource.resource'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -600,6 +604,10 @@ export interface ApiCharacterCharacter extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    resources: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::resource.resource'
+    >;
     slug: Schema.Attribute.String;
     special: Schema.Attribute.Boolean;
     updatedAt: Schema.Attribute.DateTime;
@@ -637,6 +645,77 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiResourceResource extends Struct.CollectionTypeSchema {
+  collectionName: 'resources';
+  info: {
+    displayName: 'Resource';
+    pluralName: 'resources';
+    singularName: 'resource';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    authors: Schema.Attribute.Relation<'manyToMany', 'api::author.author'>;
+    characters: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::character.character'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::resource.resource'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    preview: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    source: Schema.Attribute.Relation<'manyToOne', 'api::source.source'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiSourceSource extends Struct.CollectionTypeSchema {
+  collectionName: 'sources';
+  info: {
+    displayName: 'Source';
+    pluralName: 'sources';
+    singularName: 'source';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::source.source'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    resources: Schema.Attribute.Relation<'oneToMany', 'api::resource.resource'>;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -1156,6 +1235,8 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::character.character': ApiCharacterCharacter;
       'api::global.global': ApiGlobalGlobal;
+      'api::resource.resource': ApiResourceResource;
+      'api::source.source': ApiSourceSource;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
