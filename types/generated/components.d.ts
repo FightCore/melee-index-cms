@@ -156,6 +156,20 @@ export interface FightcoreMoveEmbed extends Struct.ComponentSchema {
   };
 }
 
+export interface MetaCollection extends Struct.ComponentSchema {
+  collectionName: 'components_meta_collections';
+  info: {
+    displayName: 'Collection';
+    icon: 'apps';
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    description: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    resources: Schema.Attribute.Relation<'oneToOne', 'api::resource.resource'>;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -237,6 +251,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'exercise.knowledge-check': ExerciseKnowledgeCheck;
       'fightcore.move-embed': FightcoreMoveEmbed;
+      'meta.collection': MetaCollection;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

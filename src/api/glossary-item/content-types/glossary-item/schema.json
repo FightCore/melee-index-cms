@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "glossary_items",
+  "info": {
+    "singularName": "glossary-item",
+    "pluralName": "glossary-items",
+    "displayName": "Glossary Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "youtube.video-embed",
+        "shared.slider",
+        "shared.rich-text",
+        "shared.quote",
+        "shared.media",
+        "fightcore.move-embed"
+      ]
+    }
+  }
+}
